@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>getUserMedia: Try HD! | Settings</title>
+<link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+<main>
+	<form rel="js-extension-settings" class="hidden" novalidate>
+		<p>
+			<label class="setting-toggle" for="enable-extension">
+				<input type="checkbox" rel="js-enable-extension" id="enable-extension">
+				<span class="checkbox-slider"></span> Enable Extension
+			</label>
+		</p>
+		<div rel="js-options" class="hidden">
+			<p>
+				Apply settings to these sites:
+			</p>
+			<p id="new-site-inputs">
+				<input type="text" rel="js-new-site-protocol" placeholder="https, *" size="4" pattern="(^\*$)|(^https?$)" autofocus>://<input type="text" rel="js-new-site-origin" placeholder="domain.tld, *" size="11" pattern="(^\*$)|(^[^./]+?(\.[^./]+?)*(:\d+)?$)">/<input type="text" rel="js-new-site-path" placeholder="path/to/page (optional)" size="25" pattern="(^\*$)|.+">
+			</p>
+			<p>
+				<button type="submit" rel="js-add-btn" disabled>add</button>
+				<button type="button" rel="js-reset-btn">reset</button>
+			</p>
+			<p>
+				<select rel="js-sites-list" size="5" multiple disabled></select>
+			</p>
+			<p>
+				<button type="button" rel="js-delete-sites-btn" disabled>delete selected</button>
+			</p>
+		</div>
+	</form>
+</main>
+<script src="js/external/webextension-polyfill.min.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>
