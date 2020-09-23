@@ -9,8 +9,8 @@ setupController();
 
 async function getExtensionSettings() {
 	try {
-		let result = await browser.storage.sync.get("TryHDSettings");
-		return result.TryHDSettings || {};
+		let result = await browser.storage.sync.get("HDCameraVideoCalls");
+		return result.HDCameraVideoCalls || {};
 	}
 	catch (err) {
 		return {};
@@ -68,7 +68,7 @@ async function onFirstInstall(evt) {
 			"https://*.whereby.com/*",
 			"https://meet.google.com/*"
 		];
-		await browser.storage.sync.set({ TryHDSettings: extensionSettings, });
+		await browser.storage.sync.set({ HDCameraVideoCalls: extensionSettings, });
 	}
 }
 

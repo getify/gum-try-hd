@@ -23,8 +23,8 @@
 
 	async function getExtensionSettings() {
 		try {
-			let result = await browser.storage.sync.get("TryHDSettings");
-			return result.TryHDSettings || {};
+			let result = await browser.storage.sync.get("HDCameraVideoCalls");
+			return result.HDCameraVideoCalls || {};
 		}
 		catch (err) {
 			return {};
@@ -81,7 +81,7 @@
 
 	async function onToggleExtension() {
 		extensionSettings.extensionEnabled = enableExtensionEl.checked;
-		await browser.storage.sync.set({ TryHDSettings: extensionSettings, });
+		await browser.storage.sync.set({ HDCameraVideoCalls: extensionSettings, });
 
 		if (extensionSettings.extensionEnabled) {
 			optionsEl.classList.remove("hidden");
@@ -217,7 +217,7 @@
 			// save settings
 			extensionSettings.sites = extensionSettings.sites || [];
 			extensionSettings.sites.push(newSiteURL);
-			await browser.storage.sync.set({ TryHDSettings: extensionSettings, });
+			await browser.storage.sync.set({ HDCameraVideoCalls: extensionSettings, });
 		}
 	}
 
@@ -251,7 +251,7 @@
 				return opt.label == site;
 			});
 		});
-		await browser.storage.sync.set({ TryHDSettings: extensionSettings, });
+		await browser.storage.sync.set({ HDCameraVideoCalls: extensionSettings, });
 	}
 
 })(this);

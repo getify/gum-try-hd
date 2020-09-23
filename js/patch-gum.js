@@ -1,13 +1,15 @@
 (function PatchGUM(global){
 	"use strict";
 
+	defineProperty(toString,"name","f");
+	defineProperty(toString,"toString",toString);
+	defineProperty(getUserMedia,"name","f");
+	defineProperty(getUserMedia,"toString",toString);
+	defineProperty(getUserMedia,Symbol("getUserMedia-patched"),true);
+
 	var origFn = global.navigator.mediaDevices.getUserMedia;
 	try {
-		Object.defineProperty(global.navigator.mediaDevices,"getUserMedia",{
-			value: getUserMedia,
-			writable: false,
-			configurable: false,
-		});
+		defineProperty(global.navigator.mediaDevices,"getUserMedia",getUserMedia);
 	}
 	catch (err) {
 		global.navigator.mediaDevices.getUserMedia = getUserMedia;
@@ -15,6 +17,19 @@
 
 
 	// **********************************
+
+	function defineProperty(obj,name,val) {
+		return Object.defineProperty(obj,name,{
+			value: val,
+			enumerable: false,
+			configurable: false,
+			writable: false,
+		});
+	}
+
+	function toString() {
+		return "() { [native code] }";
+	}
 
 	async function getUserMedia(constraints){
 		var editedConstraints = JSON.parse(JSON.stringify(constraints));

@@ -1,9 +1,9 @@
 {
 	"manifest_version": 2,
-	"name": "getUserMedia: Try HD!",
+	"name": "HD Camera Feed in Video Calls",
 	"author": "Kyle Simpson",
 	"version": "1",
-	"description": "Try to force HD (1280x720) camera resolution for web calls",
+	"description": "Try to enforce HD (16:9) camera aspect ratio for web-video calls",
 	"icons": {
 		"16": "images/logo-16.png",
 		"24": "images/logo-24.png",
