@@ -17,10 +17,28 @@
 	// **********************************
 
 	async function getUserMedia(constraints){
-		if (constraints && constraints.video && constraints.video.width && constraints.video.height) {
+		var editedConstraints = JSON.parse(JSON.stringify(constraints));
+
+		if (constraints && constraints.video) {
 			let editedConstraints = JSON.parse(JSON.stringify(constraints));
-			editedConstraints.video.width = 1280;
-			editedConstraints.video.height = 720;
+
+			if (
+				editedConstraints.video.width &&
+				editedConstraints.video.height
+			) {
+				editedConstraints.video.width = 1280;
+				editedConstraints.video.height = 720;
+			}
+			else if (Array.isArray(editedConstraints.video.advanced)) {
+				for (let constraint of editedConstraints.video.advanced) {
+					if (constraint && constraint.width) {
+						constraint.width = 1280;
+					}
+					else if (constraint && constraint.height) {
+						constraint.height = 720;
+					}
+				}
+			}
 
 			try {
 				let result = await origFn.call(navigator.mediaDevices,editedConstraints);

@@ -66,6 +66,7 @@ async function onFirstInstall(evt) {
 			"https://*.zoom.us/*",
 			"https://whereby.com/*",
 			"https://*.whereby.com/*",
+			"https://meet.google.com/*"
 		];
 		await browser.storage.sync.set({ TryHDSettings: extensionSettings, });
 	}
