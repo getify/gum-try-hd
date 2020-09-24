@@ -6,6 +6,14 @@ This extension patches the built-in `getUserMedia(..)` API to intercept these ki
 
 By default, the settings for this extension only apply the patch to Zoom/WhereBy/Google-Meet sites. You can change the settings to apply to different sites. There's also a handy enable/disable toggle switch if you want to quickly turn off the extension temporarily without actually uninstalling it.
 
+## Privacy
+
+This extension doesn't track anything about your activity at all. The only persistent storage is the list of sites you want the extension to activate on, and the flag of if you want the extension enabled or not. That's it.
+
+This extension does not make ***any network requests*** whatsoever, and never will. All operation is entirely local to your browser instance on your device.
+
+You can see all the code here in this repository. You can verify that it doesn't track you in any way. As such, it maintains your privacy completely. No exceptions.
+
 ## License
 
 All code and documentation are (c) 2020 Kyle Simpson and released under the [MIT License](http://getify.mit-license.org/). A copy of the MIT License [is also included](LICENSE.txt).
